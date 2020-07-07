@@ -49,24 +49,7 @@
                 newTask: '',
                 idForTask: 1,
                 beforeEditCache: '',
-                tasks: [
-                    {
-                        'id': 1,
-                        'title': 'Your first task is to Add another Task',
-                        'completed': false,
-                        'trashed': false,
-                        'editing': false,
-                    },
-                    {
-                        'id': 2,
-                        'title': 'You can Mark a task as Completed by clicking on the Checkmark icon' +
-                            'and Mark as Trash by clicking on the Trashcan icon',
-                        'completed': false,
-                        'trashed': false,
-                        'editing': false,
-                    },
-
-                ],
+                tasks: [],
                 completed: true,
                 trashed: false
             }
@@ -90,13 +73,6 @@
         //}
         // },
         methods: {
-            addTask() {
-
-            },
-            editTask(task) {
-                this.beforeEditCache =  task.title
-                task.editing = true
-            },
             doneEdit(task) {
                 task.editing = false
                 if (task.title.trim().length === 0) {
@@ -108,10 +84,10 @@
                 task.title = this.beforeEditCache
                 task.editing = false
             },
-            removeTask(index) {
-                this.tasks.splice(index, 1)
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(this.tasks));
-            },
+            // removeTask(index) {
+            //     this.tasks.splice(index, 1)
+            //     localStorage.setItem(STORAGE_KEY, JSON.stringify(this.tasks));
+            // },
             markAsCompleted: function(task) {
                 task.completed = !task.completed;
                 task.trashed = false

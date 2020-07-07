@@ -18,21 +18,21 @@
                     <div v-if="task.completed === false && task.trashed === false" :task="task">
                         <div class="row d-flex justify-content-center mb-2">
                             <div class="col-lg-8 col-md-8 col-sm-8">
-                                    <div class="card mt-4">
-                                        <div class="card-header">
-                                            <a href="javascript:void(0)"><fa-icon icon="trash" class="float-right" @click="markAsTrashed(task)" v-model="task.trashed"/></a>
-                                            <a href="javascript:void(0)"><fa-icon icon="check-circle" class="float-right mr-4" @click="markAsCompleted(task)" v-model="task.completed"/></a>
-                                        </div>
-                                        <div class="card-body">
-                                            <div>
-                                                <h5>Task ID: {{ task.id }}</h5>
-                                                <hr/>
-                                            </div>
-                                            <p class="card-text" v-if="!task.editing" @dblclick="editTask(task)">{{ task.title }}</p>
-                                            <input v-else class="task-edit outline-0 p-2" type="text" v-model="task.title" @blur="doneEdit(task)" @keyup.enter="doneEdit(task)" @keyup.esc="cancelEdit(task)"
-                                                   v-focus>
-                                        </div>
+                                <div class="card mt-4">
+                                    <div class="card-header">
+                                        <a href="javascript:void(0)"><fa-icon icon="trash" class="float-right" @click="markAsTrashed(task)" v-model="task.trashed"/></a>
+                                        <a href="javascript:void(0)"><fa-icon icon="check-circle" class="float-right mr-4" @click="markAsCompleted(task)" v-model="task.completed"/></a>
                                     </div>
+                                    <div class="card-body">
+                                        <div>
+                                            <h5>Task ID: {{ task.id }}</h5>
+                                            <hr/>
+                                        </div>
+                                        <p class="card-text" v-if="!task.editing" @dblclick="editTask(task)">{{ task.title }}</p>
+                                        <input v-else class="task-edit outline-0 p-2" type="text" v-model="task.title" @blur="doneEdit(task)" @keyup.enter="doneEdit(task)" @keyup.esc="cancelEdit(task)"
+                                               v-focus>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -112,10 +112,10 @@
                 task.title = this.beforeEditCache
                 task.editing = false
             },
-            removeTask(index) {
-                this.tasks.splice(index, 1)
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(this.tasks));
-            },
+            // removeTask(index) {
+            //     this.tasks.splice(index, 1)
+            //     localStorage.setItem(STORAGE_KEY, JSON.stringify(this.tasks));
+            // },
             markAsCompleted: function(task) {
                 task.completed = !task.completed;
                 task.trashed = false

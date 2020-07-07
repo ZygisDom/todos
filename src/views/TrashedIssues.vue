@@ -70,21 +70,6 @@
           //}
        // },
         methods: {
-            addTask() {
-                if (this.newTask.trim().length === 0) {
-                    return
-                }
-                this.tasks.push({
-                    id: this.idForTask,
-                    title: this.newTask,
-                    completed: false,
-                    editing: false,
-                    trashed: false,
-                })
-                this.newTask = ''
-                this.idForTask++
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(this.tasks));
-            },
             editTask(task) {
                 this.beforeEditCache =  task.title
                 task.editing = true
@@ -100,10 +85,10 @@
                 task.title = this.beforeEditCache
                 task.editing = false
             },
-            removeTask(index) {
-                this.tasks.splice(index, 1)
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(this.tasks));
-            },
+            // removeTask(index) {
+            //     this.tasks.splice(index, 1)
+            //     localStorage.setItem(STORAGE_KEY, JSON.stringify(this.tasks));
+            // },
             markAsCompleted: function(task) {
                 task.completed = !task.completed;
                 task.trashed = false
